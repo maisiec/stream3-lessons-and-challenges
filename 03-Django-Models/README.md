@@ -1,4 +1,4 @@
-#SUMMARY
+# Summary
 
 In this lesson, we’ve learned that:
 

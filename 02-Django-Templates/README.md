@@ -1,3 +1,4 @@
+# Summary
 In this lesson, we’ve learned that:
 
 -Templates are used to separate the presentation of a document from its data and logic.
