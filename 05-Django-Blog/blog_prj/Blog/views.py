@@ -7,12 +7,12 @@ from .models import Post
 
 # Create your views here.
 def post_list(request):
-	"""
-	Create a view that will return a
-	list of Posts that were published prior to 'now'
-	and render them to the 'blogpost.html' template
-	"""
-	posts = Post.objects.filter(published_date_lte=timezone.now()
-		).order_by('-published_date')
-	return render(request, "blogposts.html", {'posts':posts})
+    """
+    Create a view that will return a
+    list of Posts that were published prior to'now'
+    and render them to the 'blogposts.html' template
+    """
+    posts = Post.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-published_date')
+    return render(request, "blogposts.html", {'posts': posts})
 	
