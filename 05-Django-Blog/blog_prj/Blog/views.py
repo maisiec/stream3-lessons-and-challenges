@@ -28,3 +28,13 @@ def post_details(request, id):
 	post.views += 1 # clock up the number of post views
 	post.save()
 	return render(request, "postdetail.html", {'post': post})
+
+def top_posts(request):
+	"""
+	Get a list of posts and order them
+	by the number of views. Only return the
+	top five results.
+	"""
+	posts = Post.objects.filter(published_date__lte=timezone.now()
+		).order_by('-views')[:5]
+	return render(request, "blogposts.html", {'posts':posts})
