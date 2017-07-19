@@ -16,7 +16,7 @@ def post_list(request):
         ).order_by('-published_date')
     return render(request, "blogposts.html", {'posts': posts})
 
-def post_detail(request, id):
+def post_details(request, id):
 	"""
 	Create a view that return a signe
 	Post object based on the post ID and
