@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',  
     'disqus',
-    'Blog'
+    'Blog',
+    'django_forms_bootstrap',
 ]
 
 MIDDLEWARE = [
