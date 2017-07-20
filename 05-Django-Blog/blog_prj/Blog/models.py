@@ -19,6 +19,9 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     views = models.IntegerField(default=0) # record how often post is viewed
     tag = models.CharField(max_length=30, blank=True, null=True)
+
+    image = models.ImageField(upload_to="image", blank=True, null=True)
+    
  
     def publish(self):
         self.published_date = timezone.now()
