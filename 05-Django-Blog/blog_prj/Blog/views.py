@@ -43,7 +43,7 @@ def top_posts(request):
 
 def new_post(request):
 	if request.method == "POST":
-		form = BlogPostForm(request.POST)
+		form = BlogPostForm(request.POST, request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.author = request.user
