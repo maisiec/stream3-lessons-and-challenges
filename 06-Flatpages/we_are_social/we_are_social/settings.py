@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SITE_ID = 2
+SITE_ID = 3
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hello',
     'django.contrib.sites',
-    'django.contrib.flatpages'
+    'django.contrib.flatpages',
 ]
 
 MIDDLEWARE = [
