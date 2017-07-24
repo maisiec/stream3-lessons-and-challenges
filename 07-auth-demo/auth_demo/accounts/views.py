@@ -31,8 +31,26 @@ def register(request):
  
     return render(request, 'register.html', args)
 
+"""
+The login_required decorator ensures only those users who are logged in can see their profile.
+"""
+
+@login_required(login_url='/login/')    
+def profile(request):
+    """
+    Renders the profile page.
+    :param request:
+    :return:
+    """
+    return render(request, 'profile.html')
 
 def login(request):
+    """
+    This method checks for post method and if not displays a an empty login form. If it is a POST then the form is
+    populated and checked for validity before authentication.
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
@@ -53,7 +71,14 @@ def login(request):
     args.update(csrf(request))
     return render(request, 'login.html', args)
 
-@login_required(login_url='/login/')    
-def profile(request):
-    return render(request, 'profile.html')
+
+def logout(request):
+    """
+    Logs user out by destroying login session.
+    :param request:
+    :return:
+    """
+    auth.logout(request)
+    messages.success(request, "You have successfully logged out")
+    return redirect(reverse('index'))
 
