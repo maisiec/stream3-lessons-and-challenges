@@ -129,3 +129,5 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.EmailAuth',
 )
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'auth_demo.accounts.forms.register'
