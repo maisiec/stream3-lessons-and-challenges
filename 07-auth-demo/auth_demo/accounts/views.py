@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
@@ -30,3 +29,6 @@ def register(request):
     args.update(csrf(request))
  
     return render(request, 'register.html', args)
+    
+def profile(request):
+    return render(request, 'profile.html')
