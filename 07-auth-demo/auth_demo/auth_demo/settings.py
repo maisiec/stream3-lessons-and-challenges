@@ -122,4 +122,13 @@ STATIC_URL = '/static/'
 
 # To tell Django that we want to use this class as our User class, 
 # we need to add a line to the settings.py:
+
 AUTH_USER_MODEL = 'accounts.User'
+
+
+# so django knows to use this instead of system default 
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuth',
+)
