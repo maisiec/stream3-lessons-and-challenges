@@ -9,7 +9,7 @@ class UserRegistrationForm(UserCreationForm):
 		widget=forms.PasswordInput
 	)
 
-	password2 = forms.Charfield(
+	password2 = forms.CharField(
 		label='Password Confirmation',
 		widget=forms.PasswordInput
 	)
@@ -17,7 +17,7 @@ class UserRegistrationForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['email', 'password1', 'password2']
-		exclude - ['username']
+		exclude = ['username']
 
 	def clean_password2(self):
 		password1 = self.cleaned_data.get('password1')
