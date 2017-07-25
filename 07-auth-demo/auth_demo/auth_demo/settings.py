@@ -131,3 +131,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth_demo.accounts.forms.register'
+
+# Stripe environment variables
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_HCC9iZGSlGKmuv8TeNWFIpaw')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_CrLLB7ikEuQLOlVD3zoRcxs7')
