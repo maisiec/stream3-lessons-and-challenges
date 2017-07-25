@@ -100,3 +100,12 @@ def logout(request):
     messages.success(request, "You have successfully logged out")
     return redirect(reverse('index'))
 
+@login_required(login_url='/accounts/login/')
+def cancel_subscription(request):
+    try:
+        customer = stripe.Customer.retrieve(request.user.stripe_id)
+        customer.cancel_subscription(at_period_end=True)
+    except Exception, e:
+        messages.error(request, e)
+    return redirect('profile')
+
