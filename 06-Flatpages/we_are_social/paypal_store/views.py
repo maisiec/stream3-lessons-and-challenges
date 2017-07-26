@@ -11,9 +11,9 @@ from django.apps import AppConfig
 class PaypalStoreConfig(AppConfig):
     name = 'paypal_store'
 
+
 @csrf_exempt
 def paypal_return(request):
-    print request.POST
     args = {'post': request.POST, 'get': request.GET}
     return render(request, 'paypal/paypal_return.html', args)
 
