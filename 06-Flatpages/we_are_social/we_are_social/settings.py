@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'hello',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'paypal.standard.ipn'
+    'paypal.standard.ipn',
+    'paypal_store',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,7 @@ ROOT_URLCONF = 'we_are_social.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
