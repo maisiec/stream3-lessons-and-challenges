@@ -13,10 +13,11 @@ class PaypalStoreConfig(AppConfig):
 
 @csrf_exempt
 def paypal_return(request):
-	args = {'post': request.POST, 'get':request.GET}
-	return render(request, 'paypal/paypal_return.html', args)
+    print request.POST
+    args = {'post': request.POST, 'get': request.GET}
+    return render(request, 'paypal/paypal_return.html', args)
 
 
 def paypal_cancel(request):
-	args = {'post':request.POST, 'get':request.GET}
-	return render(request, 'paypal/paypal_cancel.html', args)
+    args = {'post': request.POST, 'get': request.GET}
+    return render(request, 'paypal/paypal_cancel.html', args)
