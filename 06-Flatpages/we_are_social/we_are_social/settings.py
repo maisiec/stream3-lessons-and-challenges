@@ -25,13 +25,13 @@ SECRET_KEY = 'ffzrsi6ta3dvc0#h3ww$=o_ec&w99oekx=g1!@#af@km)ecj0-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','http://a47f1d9c.ngrok.io']
 
 SITE_ID = 3
 
 # Paypal Settings
 SITE_URL = 'http://127.0.0.1:8000'
-PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
+PAYPAL_NOTIFY_URL = 'http://a47f1d9c.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL ='maaisiexx-facilitator@hotmail.co.uk'
 
 
