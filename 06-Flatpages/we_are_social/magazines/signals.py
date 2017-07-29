@@ -1,21 +1,24 @@
-import arrow 
-from .models import Purchase
+import arrow
+import models
+
 
 def subscription_created(sender, **kwargs):
+    ipn_obj = sender
 
-	ipn_obj = sender
-	magazine_id = ipn_obj.custom.split('-')[0]
-	user_id = ipn_obj.obj.custom.split('-')[1]
-	Purchase.objects.create(magazine_id=magazine_id,
-							user_id=user_id,
-							subscription_end=arrow.now().replace(weeks=+4).datetime)
+    magazine_id = ipn_obj.custom.split('-')[0]
+    user_id = ipn_obj.custom.split('-')[1]
 
-def subscription_was_cancelled(sunder, **kwargs):
+    models.Purchase.objects.create(magazine_id=magazine_id,
+                                   user_id=user_id,
+                                   subscription_end=arrow.now().replace(weeks=+4).datetime)
 
-	ipn_obj = sender
-	magazine_id = ipn_obj.custom.split('-')[0]
-	user_id = ipn_obj.obj.custom.split('-')[1]
-	purchase = Purchase.object.get(user_id=user_id, magazine_id=magazine_id)
-	purchase.subscription_end = arrow.now().datetime
-	purchase.save()
-	
+
+def subscription_was_cancelled(sender, **kwargs):
+    ipn_obj = sender
+
+    magazine_id = ipn_obj.custom.split('-')[0]
+    user_id = ipn_obj.custom.split('-')[1]
+
+    purchase = models.Purchase.objects.get(user_id=user_id, magazine_id=magazine_id)
+    purchase.subscription_end = arrow.now()
+    purchase.save()
