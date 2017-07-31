@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^profile/$', profile, name='profile'),
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
+    url(r'^blog/', include('reusable_blog.urls')),
 
     url(r'^cancel_subscription/$', cancel_subscription, name="cancel_subscription"),
     url(r'^subscriptions_webhook/$', subscriptions_webhook, name="subscriptions_webhook"),
