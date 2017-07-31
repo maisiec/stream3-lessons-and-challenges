@@ -29,7 +29,7 @@ def post_detail(request, id):
 	post = get_object_or_404(Post, pk=id)
 	post.views += 1 # clock up the number of post views
 	post.save()
-	return render(request, "postdetail.html", {'post': post})
+	return render(request, "blog/postdetail.html", {'post': post})
 
 def top_posts(request):
 	"""
