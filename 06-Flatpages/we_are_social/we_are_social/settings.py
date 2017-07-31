@@ -45,15 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_forms_bootstrap',
-    'hello',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'paypal.standard.ipn',
+    'django_forms_bootstrap',
+    'disqus',
+    'reusable_blog',
+    'home',
+    'accounts',
     'paypal_store',
     'products',
+    'paypal.standard.ipn',
     'magazines',
-    'accounts',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
