@@ -25,6 +25,7 @@ from products import views as product_views
 from accounts.views import register, profile, login, logout, \
     cancel_subscription, subscriptions_webhook
 from magazines import views as magazine_views
+from threads import views as forum_views
 
 
 urlpatterns = [
@@ -48,6 +49,9 @@ urlpatterns = [
     url(r'^products/$', product_views.all_products),
     url(r'^magazines/$', magazine_views.all_magazines),
 
+    url(r'^forum/$', forum_views.forum),
+    url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name="threads"),
+    url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name="new_thread"),
 ]
 
 
