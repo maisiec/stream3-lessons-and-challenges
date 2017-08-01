@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib.flatpages import views
 from django.conf.urls import url
 from django.contrib import admin
-from hello import views
+from home import views
 from django.conf.urls import url, include
 from paypal.standard.ipn import urls as paypal_urls
 from paypal_store import views as paypal_views
