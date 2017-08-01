@@ -29,12 +29,6 @@ ALLOWED_HOSTS = ['127.0.0.1','http://a47f1d9c.ngrok.io']
 
 SITE_ID = 3
 
-# Paypal Settings
-SITE_URL = 'http://127.0.0.1:8000'
-PAYPAL_NOTIFY_URL = 'http://a47f1d9c.ngrok.io/a-very-hard-to-guess-url/'
-PAYPAL_RECEIVER_EMAIL ='maaisiexx-facilitator@hotmail.co.uk'
-
-
 
 # Application definition
 
@@ -63,12 +57,13 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',
                            'accounts.backends.EmailAuth',)
 LOGIN_URL = '/login/'
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -145,8 +140,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth_demo.accounts.forms.register'
 
 # Stripe environment variables
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_HCC9iZGSlGKmuv8TeNWFIpaw')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_CrLLB7ikEuQLOlVD3zoRcxs7')
+
+# Paypal Settings
+SITE_URL = 'http://127.0.0.1:8000'
+PAYPAL_NOTIFY_URL = 'http://a47f1d9c.ngrok.io/a-very-hard-to-guess-url/'
+PAYPAL_RECEIVER_EMAIL ='maaisiexx-facilitator@hotmail.co.uk'
+
