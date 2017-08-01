@@ -42,13 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'django_forms_bootstrap',
+    'paypal.standard.ipn',
+    'debug_toolbar',
+    'tinymce',
+    'emoticons',
     'disqus',
     'reusable_blog',
     'home',
     'accounts',
     'paypal_store',
     'products',
-    'paypal.standard.ipn',
     'magazines',
 ]
 
@@ -57,6 +60,7 @@ AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',
                            'accounts.backends.EmailAuth',)
 LOGIN_URL = '/login/'
 
+INTERNAL_IPS = ('127.0.0.1')
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -68,6 +72,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'we_are_social.urls'
@@ -139,10 +144,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = ''
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static"), # static directory at the project level
 )
+
+# tinymce settings 
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth_demo.accounts.forms.register'
 
