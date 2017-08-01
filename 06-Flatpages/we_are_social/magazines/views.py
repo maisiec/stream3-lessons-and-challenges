@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from models import Magazine
 from django.contrib.auth.decorators import login_required
+from models import Magazine
 
 # Create your views here.
 @login_required
