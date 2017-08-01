@@ -17,7 +17,8 @@ from django.contrib.flatpages import views
 from django.conf.urls import url
 from django.contrib import admin
 from home import views
-from django.conf.urls import url, include
+from django.conf.urls import include, url
+from django.conf import settings
 from paypal.standard.ipn import urls as paypal_urls
 from paypal_store import views as paypal_views
 from products import views as product_views
@@ -46,4 +47,12 @@ urlpatterns = [
 
     url(r'^products/$', product_views.all_products),
     url(r'^magazines/$', magazine_views.all_magazines),
+
 ]
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.append(url(r'^debug/', include(debug_toolbar.urls)))
+
+
