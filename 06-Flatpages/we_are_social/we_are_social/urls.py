@@ -13,19 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.contrib.flatpages import views
-from django.conf.urls import url
+
+from django.conf import settings
+from django.conf.urls import url, include
 from django.contrib import admin
 from home import views
-from django.conf.urls import include, url
-from django.conf import settings
 from paypal.standard.ipn import urls as paypal_urls
 from paypal_store import views as paypal_views
 from products import views as product_views
-from accounts.views import register, profile, login, logout, \
-    cancel_subscription, subscriptions_webhook
 from magazines import views as magazine_views
+from accounts.views import register, profile, login, logout, cancel_subscription, subscriptions_webhook
 from threads import views as forum_views
+
 
 
 urlpatterns = [
@@ -58,6 +57,7 @@ urlpatterns = [
     url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$',forum_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
+    url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote')
 ]
 
 

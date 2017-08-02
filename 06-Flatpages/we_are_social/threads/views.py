@@ -3,10 +3,11 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
+from django.forms import formset_factory
 from threads.models import Subject, Post, Thread
 from .forms import ThreadForm, PostForm
-from django.forms import formset_factory
 from polls.forms import PollSubjectForm, PollForm
+from polls.models import PollSubject
 
 
 def forum(request):
@@ -145,3 +146,23 @@ def delete_post(request, thread_id, post_id):
     messages.success(request, "Your post was deleted!")
 
     return redirect(reverse('thread', args={thread_id}))
+
+@login_required
+def thread_vote(request, thread_id, subject_id):
+    thread = Thread.objects.get(id=thread_id)
+
+    subject = thread.poll.votes.filter(user=request.user)
+
+    if subject:
+        messages.error(request, "You have already votes on this! ..."
+                                "You're not trying to cheat are you?")
+        return redirect(reverse('thread', args={thread_id}))
+
+    subject = PollSubject.object.get(id=subject_id)
+
+    subject.votes.create(poll=subject.poll, user=request.user)
+
+    messages.success(request, "We've registered your vote!")
+
+    return redirect(reverse('thread', args={thread_id}))
+
