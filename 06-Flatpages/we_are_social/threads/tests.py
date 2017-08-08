@@ -5,6 +5,9 @@ from .models import Subject
 # Create your tests here.
 class SubjectPageTest(TestCase):
 
+	
+	fixtures = ['subjects']
+
 	def test_check_content_is_correct(self):
 		subject_page = self.client.get('/forum/')
 		self.assertTemplateUsed(subject_page, "forum/forum.html")
