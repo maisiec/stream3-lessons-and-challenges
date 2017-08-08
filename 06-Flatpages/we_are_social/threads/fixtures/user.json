@@ -1,0 +1,22 @@
+[
+{
+    "fields": {
+        "username": "maisie-campbell@hotmail.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2017-08-02T09:17:17.605Z",
+        "subscription_end": "2017-08-01T12:00:29.929Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$0ODdXvJspsqJ$LYUZ7wmBcLwKQz3pD9s99hQGHOIGx+qJIFrOz0b+UXE=",
+        "stripe_id": "",
+        "email": "maisie-campbell@hotmail.com",
+        "date_joined": "2017-08-01T12:00:29.928Z"
+    },
+    "model": "accounts.user",
+    "pk": 1
+}
+]
